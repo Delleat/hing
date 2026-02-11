@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b4e37u2kfg6gg"]
+
+[ext_resource type="PackedScene" uid="uid://bo6f23wwvir7m" path="res://models/zyl/zyle.glb" id="1_fm682"]
+
+[node name="zyle" unique_id=1853443264 instance=ExtResource("1_fm682")]

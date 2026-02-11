@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://h5kiiqopmtew"]
+
+[ext_resource type="Script" uid="uid://b3gyu3nmjtami" path="res://scripts/payer.gd" id="1_13kg2"]
+[ext_resource type="PackedScene" uid="uid://bhderwn2q3ggf" path="res://scenes/hig.tscn" id="1_v7dd8"]
+[ext_resource type="PackedScene" uid="uid://oaadfrk71cu8" path="res://scenes/ui.tscn" id="3_w1xwh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13kg2"]
+radius = 0.93408203
+height = 1.9840088
+
+[node name="Payer" type="CharacterBody3D" unique_id=1560084761]
+collision_mask = 2
+script = ExtResource("1_13kg2")
+
+[node name="hig" parent="." unique_id=1977679562 instance=ExtResource("1_v7dd8")]
+transform = Transform3D(0.9805736, 0, 0.19615151, 0, 1, 0, -0.19615151, 0, 0.9805736, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="hig" unique_id=374619867]
+transform = Transform3D(0.9807448, 0, -0.1952958, 0, 1, 0, 0.1952958, 0, 0.9807448, 0.32218403, -0.0050072074, -1.6231436)
+target_position = Vector3(0, 0, 4.315)
+collision_mask = 21203
+hit_from_inside = true
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 1, 1)
+debug_shape_thickness = 5
+
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=1098553110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21807861, 0)
+shape = SubResource("CapsuleShape3D_13kg2")
+
+[node name="UI" parent="." unique_id=449322587 instance=ExtResource("3_w1xwh")]
+
+[node name="hed" type="Node3D" parent="." unique_id=1245002755]
+
+[node name="SpringArm" type="SpringArm3D" parent="hed" unique_id=20845410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545, 0)
+collision_mask = 2
+spring_length = 5.0
+
+[node name="Camera" type="Camera3D" parent="hed/SpringArm" unique_id=1777701006]
+near = 0.001

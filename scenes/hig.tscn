@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bhderwn2q3ggf"]
+
+[ext_resource type="PackedScene" uid="uid://c6xdjsn5sypr7" path="res://models/hing/hig.glb" id="1_t2ky3"]
+
+[sub_resource type="Animation" id="Animation_t2ky3"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ona/Skeleton3D:Bone")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1.1920929e-07, 0, 1)
+
+[sub_resource type="Animation" id="Animation_hvf23"]
+resource_name = "fewsygu"
+length = 0.5
+loop_mode = 1
+step = 0.011111111
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ona/Skeleton3D:Bone")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -0.581, 0.814, 0.15555556, 1, 0.707, 0, 0, 0.707, 0.26666668, 1, 0, 0, 0.595, 0.804)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_scxan"]
+_data = {
+&"RESET": SubResource("Animation_t2ky3"),
+&"fewsygu": SubResource("Animation_hvf23")
+}
+
+[node name="hig" unique_id=1977679562 instance=ExtResource("1_t2ky3")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=1589432421]
+libraries/ = SubResource("AnimationLibrary_scxan")
+autoplay = &"fewsygu"

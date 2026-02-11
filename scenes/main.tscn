@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://bu4m6htxi0qm5"]
+
+[ext_resource type="Shader" uid="uid://by5st64hsdkwm" path="res://shaders/sky.gdshader" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://h5kiiqopmtew" path="res://scenes/payer.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://b5m4xjoqka2j1" path="res://scenes/animatable_body_3d.tscn" id="2_jyhfs"]
+[ext_resource type="Shader" uid="uid://cmccr20pwep0e" path="res://shaders/gay.gdshader" id="3_sugp2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sugp2"]
+shader = ExtResource("1_0wfyh")
+shader_parameter/day_top_color = Color(0.1, 0.6, 1, 1)
+shader_parameter/day_bottom_color = Color(0.4, 0.8, 1, 1)
+shader_parameter/sunset_top_color = Color(0.7, 0.75, 1, 1)
+shader_parameter/sunset_bottom_color = Color(1, 0.5, 0.7, 1)
+shader_parameter/night_top_color = Color(0.02, 0, 0.04, 1)
+shader_parameter/night_bottom_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/horizon_color = Color(0, 0.7, 0.8, 1)
+shader_parameter/horizon_blur = 0.05
+shader_parameter/sun_color = Color(10, 8, 1, 1)
+shader_parameter/sun_sunset_color = Color(10, 0, 0, 1)
+shader_parameter/sun_size = 0.2
+shader_parameter/sun_blur = 10.0
+shader_parameter/moon_color = Color(1, 0.95, 0.7, 1)
+shader_parameter/moon_size = 0.06
+shader_parameter/moon_blur = 0.1
+shader_parameter/clouds_edge_color = Color(0.8, 0.8, 0.98, 1)
+shader_parameter/clouds_top_color = Color(1, 1, 1, 1)
+shader_parameter/clouds_middle_color = Color(0.92, 0.92, 0.98, 1)
+shader_parameter/clouds_bottom_color = Color(0.83, 0.83, 0.94, 1)
+shader_parameter/clouds_speed = 2.0
+shader_parameter/clouds_direction = 0.2
+shader_parameter/clouds_scale = 1.0
+shader_parameter/clouds_cutoff = 0.3
+shader_parameter/clouds_fuzziness = 0.5
+shader_parameter/clouds_weight = 0.0
+shader_parameter/clouds_blur = 0.25
+shader_parameter/stars_speed = 1.0
+shader_parameter/overwritten_time = 0.0
+
+[sub_resource type="Sky" id="Sky_jyhfs"]
+sky_material = SubResource("ShaderMaterial_sugp2")
+
+[sub_resource type="Environment" id="Environment_o5qli"]
+background_mode = 2
+sky = SubResource("Sky_jyhfs")
+reflected_light_source = 2
+tonemap_mode = 3
+ssr_enabled = true
+sdfgi_use_occlusion = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgp6g"]
+size = Vector3(31, 0, 31)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o5qli"]
+size = Vector2(31, 31)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyhfs"]
+render_priority = 0
+shader = ExtResource("3_sugp2")
+shader_parameter/flag_type = 1
+shader_parameter/wind_strength = 1.0
+shader_parameter/wind_speed = 1.0
+shader_parameter/wind_angle = 0.285
+shader_parameter/wind_phase = 0.0
+shader_parameter/pin = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tbgi4"]
+size = Vector2(2, 1)
+subdivide_width = 128
+subdivide_depth = 128
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbgi4"]
+render_priority = 0
+shader = ExtResource("3_sugp2")
+shader_parameter/flag_type = 3
+shader_parameter/wind_strength = 1.0
+shader_parameter/wind_speed = 2.0
+shader_parameter/wind_angle = 90.0
+shader_parameter/wind_phase = 0.0
+shader_parameter/pin = true
+
+[node name="Main" type="Node3D" unique_id=79085668]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=517663311]
+environment = SubResource("Environment_o5qli")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1042361188]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 1
+
+[node name="Payer" parent="." unique_id=1560084761 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9289448, 0)
+inv_y = true
+hujdupa = ExtResource("2_jyhfs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=25183012]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2021573334]
+shape = SubResource("BoxShape3D_sgp6g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=2031292083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020256042, 0.022993088, -0.015676975)
+mesh = SubResource("PlaneMesh_o5qli")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2000838626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9284863, 12.887634)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(19.833008, 7.8759766, 5.619385)
+
+[node name="gay2" type="MeshInstance3D" parent="." unique_id=1392381999]
+transform = Transform3D(35.35534, 35.35534, -1.545431e-06, 0, -2.1855694e-06, -50, -35.35534, 35.35534, -1.545431e-06, -63.757996, 40.817802, -50.651016)
+material_override = SubResource("ShaderMaterial_jyhfs")
+mesh = SubResource("PlaneMesh_tbgi4")
+
+[node name="gay3" type="MeshInstance3D" parent="." unique_id=1589885002]
+transform = Transform3D(18.07716, 46.61777, -1.5454309e-06, 8.821507e-07, -1.9996312e-06, -50, -46.61777, 18.07716, -1.5454309e-06, 67.02844, 63.66356, 20.74622)
+material_override = SubResource("ShaderMaterial_tbgi4")
+mesh = SubResource("PlaneMesh_tbgi4")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=170577684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.519239, 23.449984, -44.339386)
+layers = 2
+size = Vector3(23.58551, 21.124084, 23.038086)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1292102310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.683937, 23.449984, -44.339386)
+layers = 2
+size = Vector3(23.58551, 21.124084, 23.038086)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1941764623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.146683, 61.965805, -44.339386)
+layers = 2
+size = Vector3(23.58551, 59.552383, 23.038086)

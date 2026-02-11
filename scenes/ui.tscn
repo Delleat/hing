@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://oaadfrk71cu8"]
+
+[ext_resource type="Script" uid="uid://b5uvs85gdbnca" path="res://scripts/ui.gd" id="1_nt7q6"]
+
+[node name="UI" type="Control" unique_id=449322587]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nt7q6")
+
+[node name="FPSCounter" type="Label" parent="." unique_id=54418412]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.194
+anchor_bottom = 0.094000004
+offset_right = 0.5119934
+offset_bottom = 0.08799744
+text = "fps: 2137"
+metadata/_edit_use_anchors_ = true
